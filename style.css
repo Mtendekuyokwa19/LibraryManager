@@ -1,0 +1,78 @@
+*{
+margin: 0px;
+padding: 0px;
+box-sizing: border-box;
+
+}
+body{
+
+background-color: #191A1E;
+
+}
+
+.header{
+
+    display: flex;
+    justify-content:space-evenly;
+   height: 100px;
+    width: 100vw;
+    background-color: #000128;
+    color: white;
+   
+}
+
+#github{
+
+    width: 50px;
+    height: 50px;
+    align-self: center;
+    margin-left: 500px;
+   
+
+}
+.header  path{
+
+    fill: beige;
+}
+
+
+
+h3{
+
+    align-self: center;
+}
+
+.floatingbtn button{
+
+    width: 50px;
+    height: 50px;
+    background-color: #4A9CF0;
+    border-radius: 100%;
+    padding: 10px;
+    border: none;
+    box-shadow: 2px 6px 21px black;
+    position: fixed;
+    margin:calc(50vh + 60px) 0px 0px calc(50vw + 430px) ;
+
+}
+
+.entry{
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button:active{
+
+        background-color: #FD615B;
+
+}
+
+dialog{
+    margin:calc(30vh + 60px) 0px 0px 20vw ;
+    width: 350px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+
+}
