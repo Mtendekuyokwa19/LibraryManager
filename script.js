@@ -1,26 +1,50 @@
-// const myLibrary = [];
 
-// function Book() {
-//   // the constructor...
-// }
-
-// //addBook will run code that add book and will run the contructorafter taking in entries from users
-
-// //the submit button return everything in form of a form so make add books be able to receives the result in the form
-
-// function addBookToLibrary() {
-//   // do stuff here
-// }
-
-
-// //a button for creating a book it will create a form
 
 let newEntry=document.getElementById("compose");
 
 let dialog=document.getElementById("entryBox");
 
 newEntry.addEventListener("click", () => {
-    dialog.showModal();
+    dialog.show();
 
   })
+let pages=document.getElementById("pages");
+let create=document.getElementById("Create");
+let Name=document.getElementById("Book");
+let writer=document.getElementById("Author");
+
+const myLibrary = [];
+
+function addBookToLibrary(book) {
+  myLibrary[(myLibrary.length+1)]=book;
+  
+
+}
+
+function Book(name,Author,pages) {
+  this.name=name,
+  this.Author=Author,
+  this.pages=pages
+
+}
+
+create.addEventListener("click",function(e){
+
+
+let Article=new Book(Name.value,writer.value,pages.value)
+
+addBookToLibrary(Article);
+console.log(myLibrary);
+
+
+})
+let remove=document.getElementById("remove")
+
+remove.addEventListener("click",()=>{
+
+  dialog.close()
+
+})
+
+
 

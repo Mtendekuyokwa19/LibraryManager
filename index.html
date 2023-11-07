@@ -8,6 +8,8 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+   
+ 
     <div class="header">
  <h3>Ubuntu Reader's Digest</h3>
 
@@ -23,13 +25,35 @@
 </div>
 
 <dialog id="entryBox">
+<div>
 
-    <p>hey</p>
+    <div>
+    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M6 22h15v-2H6.012C5.55 19.988 5 19.805 5 19s.55-.988 1.012-1H21V4c0-1.103-.897-2-2-2H6c-1.206 0-3 .799-3 3v14c0 2.201 1.794 3 3 3zM5 8V5c0-.805.55-.988 1-1h13v12H5V8z"></path><path d="M8 6h9v2H8z"></path></svg></div></div>
+    <form action="" method="dialog">
+        <div>
+            <label for="Book">Book title:</label>
+            <input id="Book" type="text" placeholder="Moral Ground"  required >
+        </div>
+        <div>
+            <label for="Author">Author:</label>
+            <input id="Author" type="text" placeholder="Wangari Mathaai" required>
+        </div>
+        <div>
+            <label for="pages">Total pages:</label>
+            <input id="pages" type="number" placeholder="87" min="1" required>
+        </div>
+
+        <div class="statusbtn">
+            <button type="button" id="remove">Cancel</button><button type="submit" id="Create">Create</button>
+        </div>
+    </form>
+
+
 </dialog>
 
 
 <div class="floatingbtn">
-    <button id="compose" title="Add"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);"><path d="M4 21a1 1 0 0 0 .24 0l4-1a1 1 0 0 0 .47-.26L21 7.41a2 2 0 0 0 0-2.82L19.42 3a2 2 0 0 0-2.83 0L4.3 15.29a1.06 1.06 0 0 0-.27.47l-1 4A1 1 0 0 0 3.76 21 1 1 0 0 0 4 21zM18 4.41 19.59 6 18 7.59 16.42 6zM5.91 16.51 15 7.41 16.59 9l-9.1 9.1-2.11.52z"></path></svg></button>
+    <button  id="compose" title="Add"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);"><path d="M4 21a1 1 0 0 0 .24 0l4-1a1 1 0 0 0 .47-.26L21 7.41a2 2 0 0 0 0-2.82L19.42 3a2 2 0 0 0-2.83 0L4.3 15.29a1.06 1.06 0 0 0-.27.47l-1 4A1 1 0 0 0 3.76 21 1 1 0 0 0 4 21zM18 4.41 19.59 6 18 7.59 16.42 6zM5.91 16.51 15 7.41 16.59 9l-9.1 9.1-2.11.52z"></path></svg></button>
 </div>
 </body>
 </html>

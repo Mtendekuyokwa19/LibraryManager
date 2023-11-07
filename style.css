@@ -6,7 +6,7 @@ box-sizing: border-box;
 }
 body{
 
-background-color: #191A1E;
+background-color: #42434b;
 
 }
 
@@ -18,7 +18,7 @@ background-color: #191A1E;
     width: 100vw;
     background-color: #000128;
     color: white;
-   
+    
 }
 
 #github{
@@ -68,11 +68,123 @@ button:active{
 
 }
 
+
 dialog{
-    margin:calc(30vh + 60px) 0px 0px 20vw ;
-    width: 350px;
-    height: 250px;
+
+    
+width: 300px;
+height: 350px;
+padding: 30px;
+border-radius: 12px;
+
+color: white;
+border: none;
+margin:  50px 0px 0px calc(30vw + 150px);
+box-shadow: 4px 25px 30px black;
+background-color: #1A1D2B;
+
+
+} 
+dialog::backdrop{
+
+filter: blur(30px);
+
+}
+
+ form{
+
+display: flex;
+flex-direction: column;
+gap:22px;
+
+
+
+}
+form>div{
+
     display: flex;
     flex-direction: column;
+    gap: 2px;
+}
+
+.statusbtn{
+ 
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+#entryBox>div:first-child{
+
+ width: inherit;
+    justify-self: center;
+
+
+
+
+}
+
+#entryBox svg{
+fill: white;
+width: 30px;
+height: 30px;
+position: relative;
+left: 100px;
+margin-bottom: 10px;
+
+}
+input{
+
+    padding: 3px 12px ;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    height: 30px;
+    background-color: #DEDEDE;
+}
+
+input:focus{
+   
+border: 2px lightgreen solid;
+
+} 
+#remove,#Create{
+
+
+border: none;
+outline: none;
+padding: 5px;
+border-radius: 5px;
+width: 70px;
+
+}
+
+#Create{
+
+    color: white;
+    background-color:#4A9CF0 ;
+
+}
+#remove{
+
+    color: white;
+    background: #D60E32;
+  
+
+}
+
+#Create:active{
+    background-color:#ADE903 ;
+
+} 
+#remove:active{
+
+
+    background-color: #7768D8;
+}
+dialog::backdrop{
+
+opacity: 3;
 
 }
