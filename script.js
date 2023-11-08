@@ -35,21 +35,6 @@ let bookCollection=document.querySelector('.bookCollection');
 
 
 function bringBooks(myLibrary){
-  let value;
- 
-  let docs= document.querySelectorAll('.bookCollection');
-
-   
-
-
-for (let i = 1; i < docs.length-1; i++) {
-  value=docs[i];
-  value.remove()
-  
-}
-
-
-
 
 for (let i = 0; i <myLibrary.length; i++) {
  
@@ -127,32 +112,11 @@ for (let i = 0; i < deletebtn.length; i++) {
 
    
  let newlibray=myLibrary.splice(i,1);
+ bookRemove();
 
- bringBooks(nw);})}
+})}
 
-//  let docs= document.querySelectorAll('.bookCollection');
 
-   
-//  docs.forEach(docs=> {
-//   docs.remove();
-// });
-
-// let collection=document.createElement('div');
-// collection.classList.add('collection');
-// collection.className="bookCollection";
-
-// document.body.appendChild(collection)
-
-//  console.log(myLibrary);
-
-//   myLibrary.forEach((elements)=>{
-
-//       createDiv(elements);
-
-//   })
-    
-    
-//     })
   
 }
 
@@ -172,3 +136,12 @@ remove.addEventListener("click",()=>{
 
 //to delete entry
 
+function bookRemove(){
+
+  let books=document.querySelectorAll(".details");
+ books.forEach(books=>{
+
+    books.remove();
+ })
+
+}
