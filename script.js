@@ -35,7 +35,7 @@ let bookCollection=document.querySelector('.bookCollection');
 
 
 function bringBooks(myLibrary){
-
+bookRemove();
 for (let i = 0; i <myLibrary.length; i++) {
  
 
@@ -105,14 +105,20 @@ bringBooks(myLibrary);
 
 
 
-
-let deletebtn=document.getElementsByClassName("deletebtn");
+//because when one is removed the others remain
+let deletebtn=document.querySelectorAll(".deletebtn");
 for (let i = 0; i < deletebtn.length; i++) {
   deletebtn[i].addEventListener('click',()=>{
 
    
  let newlibray=myLibrary.splice(i,1);
  bookRemove();
+console.log(myLibrary);
+ for (let i = 0; i < myLibrary.length; i++) {
+  createDiv(myLibrary[i]);
+
+
+ }
 
 })}
 
