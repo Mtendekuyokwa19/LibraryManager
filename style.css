@@ -6,7 +6,7 @@ box-sizing: border-box;
 }
 body{
 
-background-color: #42434b;
+background-color: #DCE3EB;
 
 }
 
@@ -16,7 +16,7 @@ background-color: #42434b;
     justify-content:space-evenly;
    height: 100px;
     width: 100vw;
-    background-color: #000128;
+    background-color: #4A4DAE;
     color: white;
     
 }
@@ -46,13 +46,15 @@ h3{
 
     width: 50px;
     height: 50px;
-    background-color: #4A9CF0;
+    background-color: #50C099;
     border-radius: 100%;
     padding: 10px;
     border: none;
-    box-shadow: 2px 6px 21px black;
+    box-shadow: 2px 4px 11px black;
     position: fixed;
-    margin:calc(50vh + 60px) 0px 0px calc(50vw + 430px) ;
+    top: calc(50vh + 150px) ;
+    left: calc(50vw + 430px);
+   
 
 }
 
@@ -62,9 +64,9 @@ h3{
     justify-content: space-evenly;
 }
 
-button:active{
+button:hover{
 
-        background-color: #FD615B;
+        background-color: #ADE903;
 
 }
 
@@ -76,12 +78,14 @@ width: 300px;
 height: 350px;
 padding: 30px;
 border-radius: 12px;
-
+position: fixed;
+top: 150px;
+left: calc(30vw + 150px);;
 color: white;
 border: none;
-margin:  50px 0px 0px calc(30vw + 150px);
-box-shadow: 4px 25px 30px black;
-background-color: #1A1D2B;
+
+box-shadow: 4px 20px 20px rgba(0,0,0,0.75);
+background-color: #1a759f;
 
 
 } 
@@ -141,12 +145,12 @@ input{
     outline: none;
     border: none;
     height: 30px;
-    background-color: #DEDEDE;
+   
 }
 
 input:focus{
    
-border: 2px lightgreen solid;
+border: 2px #f1faee solid;
 
 } 
 #remove,#Create{
@@ -157,19 +161,20 @@ outline: none;
 padding: 5px;
 border-radius: 5px;
 width: 70px;
+height: 34px;
 
 }
 
 #Create{
 
     color: white;
-    background-color:#4A9CF0 ;
+    background-color:#1D3557 ;
 
 }
 #remove{
 
     color: white;
-    background: #D60E32;
+    background: #E63946;
   
 
 }
@@ -178,13 +183,91 @@ width: 70px;
     background-color:#ADE903 ;
 
 } 
-#remove:active{
+#remove:hover{
 
 
     background-color: #7768D8;
+    border: none;
 }
 dialog::backdrop{
 
 opacity: 3;
+
+}
+.bookCollection{
+
+width: 100vw;
+height:50vh ;
+
+display: grid;
+grid-template-columns: repeat(4,1fr);
+grid-template-rows: repeat(2,128px);
+gap: 30px;
+padding: 20px 12px 0px 12px ;
+grid-auto-columns: 1fr;
+grid-auto-rows: 150px;
+
+
+background-color: #C71026;
+}
+
+.details{
+
+
+background-color: white;
+padding: 12px;
+border-radius: 12px;
+color:black;
+box-shadow: 1px 3px 12px 0px rgba(0,0,0,0.75);
+
+
+
+}
+
+.details>p:first-child{
+
+    font-size:23px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    border-bottom:1px solid #F2F3FB  ;
+
+
+
+}
+
+.details button{
+
+    padding: 3px;
+    border: none;
+    outline: none;
+    background-color: #C71026;
+    color: white;
+    position: relative;
+    left: 200px;
+    
+    height: 30px;
+    width: 70px;
+    border-radius: 7px;
+    
+}
+
+.details>p:nth-child(2)::before{
+content: "By: ";
+
+}
+.details>p:nth-child(2){
+
+    font-size: 17px;
+   
+    font-style: italic;
+
+}
+.details>p:nth-child(3){
+
+    font-style: 17px;
+
+}
+.details>p:nth-child(3)::before{
+content: "Pages: ";
 
 }
