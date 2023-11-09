@@ -106,21 +106,45 @@ bringBooks(myLibrary);
 
 
 //because when one is removed the others remain
+
+function remover(params) {
+  
+
 let deletebtn=document.querySelectorAll(".deletebtn");
-for (let i = 0; i < deletebtn.length; i++) {
-  deletebtn[i].addEventListener('click',()=>{
+let i=0;
+let j=0;
+deletebtn.forEach(deletebtn => {
+
+  deletebtn.addEventListener("click", event => {
 
    
- let newlibray=myLibrary.splice(i,1);
- bookRemove();
-console.log(myLibrary);
- for (let i = 0; i < myLibrary.length; i++) {
-  createDiv(myLibrary[i]);
+      let newlibray=myLibrary.splice(i,1);
+      i++;
+      bookRemove();
+     console.log(myLibrary);
+      for (let i = 0; i < myLibrary.length; i++) {
+       createDiv(myLibrary[i]);
+ 
+  
+     
+     
+    
+    }
+  
+  
+      remover();
+  
+  
+  
+  })
+
+});
+
+}
+
+remover();
 
 
- }
-
-})}
 
 
   
@@ -132,6 +156,8 @@ console.log(myLibrary);
 
 
 )
+
+
 let remove=document.getElementById("remove");
 let text=document.getElementById("personal");
 remove.addEventListener("click",()=>{
