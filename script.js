@@ -87,21 +87,30 @@ subject.appendChild(deletebtn);
     // 
 
 }
-Book.prototype.mother=function daugh(){
-
-  (this.name);
-}
 
 
 
 create.addEventListener("click",function(e){
 
-
-let Article=new Book(Name.value,writer.value,pages.value)
-
-
+  let Article=new Book(Name.value,writer.value,pages.value);
+if (!(Article.name===undefined||Article.name===''&&Article.Author===undefined||Article.Author===''&&Article.pages==''&&Article.pages===undefined)) {
+ 
 addBookToLibrary(Article);
-bringBooks(myLibrary);
+
+
+  bringBooks(myLibrary);
+
+
+  
+}
+
+
+
+console.log((!(Name.value ===''&&writer.value ==='')),myLibrary);
+
+
+
+
 
 
 

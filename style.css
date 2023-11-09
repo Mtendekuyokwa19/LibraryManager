@@ -241,8 +241,8 @@ box-shadow: 1px 3px 12px 0px rgba(0,0,0,0.75);
     outline: none;
     background-color: #C71026;
     color: white;
-    position: relative;
-    left: 200px;
+
+    margin-left: 200px;
     
     height: 30px;
     width: 70px;
