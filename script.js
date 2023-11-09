@@ -1,5 +1,4 @@
 
-
 let newEntry=document.getElementById("compose");
 
 let dialog=document.getElementById("entryBox");
@@ -73,6 +72,9 @@ for (let key in extra) {
   }
  i++;
 }
+let checkbox=document.createElement('input');
+checkbox.setAttribute("type", "checkbox");
+
 
 let deletebtn=document.createElement('button');
 deletebtn.classList.add('deletebtn');
@@ -116,38 +118,59 @@ console.log((!(Name.value ===''&&writer.value ==='')),myLibrary);
 
 //because when one is removed the others remain
 
-function remover(params) {
+function remover() {
   
 
 let deletebtn=document.querySelectorAll(".deletebtn");
 let i=0;
 let j=0;
-deletebtn.forEach(deletebtn => {
 
-  deletebtn.addEventListener("click", event => {
-
-   
-      let newlibray=myLibrary.splice(i,1);
-      i++;
-      bookRemove();
-     console.log(myLibrary);
-      for (let i = 0; i < myLibrary.length; i++) {
-       createDiv(myLibrary[i]);
- 
+function libraryCheckout(obj,pos,button){
+this.obj=obj;
+this.pos=pos;
+this.button=button.addEventListener('click',()=>{
   
-     
-     
+  console.log(AllBooks);
     
-    }
-  
-  
-      remover();
-  
-  
-  
-  })
+  myLibrary.splice(pos,1);
+ 
+  bookRemove();
+ console.log(myLibrary);
+  for (let i = 0; i < myLibrary.length; i++) {
+   createDiv(myLibrary[i]);
+
+
+ 
+ 
+
+}
+
+
+  remover();
+
+
+
+
+
 
 });
+
+};
+let AllBooks=[];
+let count =0;
+myLibrary.forEach(myLibrary => {
+
+
+  let NewBook=new libraryCheckout(myLibrary,count,deletebtn[count]);
+
+  AllBooks[count]=NewBook;
+
+count++;
+  
+});
+
+
+
 
 }
 
