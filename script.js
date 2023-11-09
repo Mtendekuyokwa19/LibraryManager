@@ -79,18 +79,16 @@ subject.appendChild(statusManager);
 //Use of for in loop was done because there is a bug thats preventing normal access to Status
 let readStatus=document.createElement('button');
 readStatus.setAttribute("class", "checkbox");
-for (const key in extra) {
-  if (key==="Status") {
-    readStatus.textContent=extra[key];
+
+readStatus.textContent=extra["Status"];
+
     if (readStatus.textContent==="Read") {
       readStatus.style.setProperty("background-color","green")
       
-    } else {
-      
-    }
-    
-  }
-}
+    } 
+
+  
+
 
 statusManager.appendChild(readStatus);
 readStatus.addEventListener('click',(e)=>{
@@ -110,12 +108,8 @@ readStatus.addEventListener('click',(e)=>{
    readStatus.style.setProperty("background-color","red")
  }
 
- for (let key in extra) {
-  if (key==="Status") {
-    extra[key]=readStatus.textContent;
-    
-  }
-}
+ extra["Status"]=readStatus.textContent;
+
   // manageStatus(readStatus);
 
 })
