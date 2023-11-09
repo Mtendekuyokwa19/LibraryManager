@@ -14,42 +14,40 @@ let writer=document.getElementById("Author");
 
 const myLibrary = [];
 
-
 function addBookToLibrary(book) {
   
   myLibrary[(myLibrary.length)]=book;
   
-
 }
 
-function Book(name,Author,pages) {
+function Book(name,Author,pages,Status="not read") {
   this.name=name,
   this.Author=Author,
   this.pages=pages
+  this.Status=Status
+}
+
+Book.prototype.reading=function(){
+
+  this.Status="Read";
 
 }
 
 let carrier;
+
 let bookCollection=document.querySelector('.bookCollection');
 
 
 function bringBooks(myLibrary){
 bookRemove();
+
 for (let i = 0; i <myLibrary.length; i++) {
  
-
     createDiv(myLibrary[i]);
   
     
   }
 }
-
-
-
-
-  
-  
-
 
 
 function createDiv(extra){
@@ -58,7 +56,7 @@ function createDiv(extra){
   
   subject.classList.add('subject');
   subject.className="details";
-
+ 
  
 let i=0;
 for (let key in extra) {
@@ -70,18 +68,64 @@ for (let key in extra) {
   screen.textContent=extra[key];
   subject.appendChild(screen);
   }
+  
  i++;
 }
-let checkbox=document.createElement('input');
-checkbox.setAttribute("type", "checkbox");
 
+
+let statusManager=document.createElement('div');
+statusManager.id="statusManager";
+subject.appendChild(statusManager);
+//Use of for in loop was done because there is a bug thats preventing normal access to Status
+let readStatus=document.createElement('button');
+readStatus.setAttribute("class", "checkbox");
+for (const key in extra) {
+  if (key==="Status") {
+    readStatus.textContent=extra[key];
+    if (readStatus.textContent==="Read") {
+      readStatus.style.setProperty("background-color","green")
+      
+    } else {
+      
+    }
+    
+  }
+}
+
+statusManager.appendChild(readStatus);
+readStatus.addEventListener('click',(e)=>{
+ if(readStatus.textContent==="not read"){
+  
+  readStatus.textContent="Read";
+  readStatus.style.setProperty("background-color","green")
+  console.log(myLibrary);
+ }
+
+ else{
+
+   readStatus.textContent="not read";
+
+ 
+
+   readStatus.style.setProperty("background-color","red")
+ }
+
+ for (let key in extra) {
+  if (key==="Status") {
+    extra[key]=readStatus.textContent;
+    
+  }
+}
+  // manageStatus(readStatus);
+
+})
 
 let deletebtn=document.createElement('button');
 deletebtn.classList.add('deletebtn');
 deletebtn.id="deletebtn";
 deletebtn.textContent="Delete";
 
-subject.appendChild(deletebtn);
+statusManager.appendChild(deletebtn);
 
 
     bookCollection.appendChild(subject)
@@ -89,8 +133,6 @@ subject.appendChild(deletebtn);
     // 
 
 }
-
-
 
 create.addEventListener("click",function(e){
 
@@ -105,16 +147,6 @@ addBookToLibrary(Article);
 
   
 }
-
-
-
-console.log((!(Name.value ===''&&writer.value ==='')),myLibrary);
-
-
-
-
-
-
 
 //because when one is removed the others remain
 
@@ -155,6 +187,7 @@ this.button=button.addEventListener('click',()=>{
 
 });
 
+
 };
 let AllBooks=[];
 let count =0;
@@ -175,20 +208,9 @@ count++;
 }
 
 remover();
-
-
-
-
-  
 }
 
-
-
-
-
-
 )
-
 
 let remove=document.getElementById("remove");
 let text=document.getElementById("personal");
@@ -209,3 +231,11 @@ function bookRemove(){
  })
 
 }
+//toggling button
+//toggle from
+
+
+  
+  
+  
+
