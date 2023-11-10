@@ -12,9 +12,58 @@ font-family: 'Open Sans', sans-serif;
 /* font-family: 'Quicksand', sans-serif; */
 
 }
+.Dark{
+
+    ---bodyColor:#191D23;
+    ---header:#4A4DAE;
+    ---headerfont:white;
+    ---headericon:beige;
+    ---floatingColor:#7B57E0;
+    ---dialogDrop:#1a759f;
+    ---entryBox:white;
+    ---inputFocus:#f1faee ;
+    ---create:white;
+    ---remove:white;
+    ---createBackground:#1D3557 ;
+    ---removeBackground:#E63946;
+    ---detailsBackground:#262c36;
+    ---detailsColor:white;
+    ---detailsBorderbottom:#334e68; 
+}
+.Light{
+
+    ---bodyColor:#F1F3F4;
+    ---header:#50C099;
+    ---headerfont:black;
+    ---headericon:black;
+    ---floatingColor:#FFC565;
+    ---dialogDrop:#1a759f;
+    ---entryBox:black;
+    ---inputFocus:#f1faee ;
+    ---create:black;
+    ---remove:black;
+    ---createBackground: #F9837C;
+    ---removeBackground:#E63946;
+    ---detailsBackground:#5DAAEE;
+    ---detailsColor:white;
+    ---detailsBorderbottom:#DCE3EB; 
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
 body{
 
-background-color: #191D23;
+background-color:var(---bodyColor);
 overflow-x:hidden;
 
 
@@ -26,8 +75,8 @@ overflow-x:hidden;
     justify-content:space-evenly;
    height: 100px;
     width: 100vw;
-    background-color: #4A4DAE;
-    color: white;
+    background-color: var(---header);
+    color: var(---headerfont);
     position: sticky;
     top: 0px;
     
@@ -35,16 +84,35 @@ overflow-x:hidden;
 
 #github{
 
-    width: 50px;
+    width: 174px;
     height: 50px;
     align-self: center;
     margin-left: 500px;
+   display: flex;
+   gap: 10px;
    
+
+}
+#github button{
+
+    width: 100px;
+    background-color:#191D23;
+    border-radius: 12px;
+    color: white;
+    border: none;
+    font-weight: bold;
+    box-shadow:  4px 4px 12px rgba(0,0,0,0.75);
+    
+}
+#github svg{
+    width: 50px;
+    height: 50px;
+
 
 }
 .header  path{
 
-    fill: beige;
+    fill: var(---headericon);
 }
 
 
@@ -76,9 +144,9 @@ h3{
     justify-content: space-evenly;
 }
 
-button:hover{
+button:not(#toogle):hover{
 
-        background-color: #ADE903;
+        background-color: #2f3817;
 
 }
 
@@ -93,14 +161,20 @@ border-radius: 12px;
 position: fixed;
 top: 150px;
 left: calc(30vw + 150px);;
-color: white;
+color:var(---headerfont);
 border: none;
 
 box-shadow: 4px 20px 20px rgba(0,0,0,0.75);
-background-color: #1a759f;
+background-color: var(---dialogDrop);
 
 
 } 
+
+dialog button{
+
+    font-weight: bold;
+
+}
 dialog::backdrop{
 
 filter: blur(30px);
@@ -142,7 +216,7 @@ form>div{
 }
 
 #entryBox svg{
-fill: white;
+fill: var(---entryBox);
 width: 30px;
 height: 30px;
 position: relative;
@@ -162,7 +236,7 @@ input{
 
 input:focus{
    
-border: 2px #f1faee solid;
+border: 2px var(---inputFocus) solid;
 
 } 
 #remove,#Create{
@@ -179,14 +253,14 @@ height: 34px;
 
 #Create{
 
-    color: white;
-    background-color:#1D3557 ;
+    color: var(---create);
+    background-color:var(---createBackground);
 
 }
 #remove{
 
-    color: white;
-    background: #E63946;
+    color: var(---remove);
+    background:var(---removeBackground) ;
   
 
 }
@@ -228,10 +302,10 @@ grid-auto-rows: 150px;
 width:300px;
 
 
-background-color: #262c36;
+background-color:var(---detailsBackground) ;
 padding: 12px;
 border-radius: 12px;
-color:white;
+color:var(---detailsColor);
 box-shadow: 1px 3px 12px 0px rgba(0,0,0,0.75);
 width: auto;
 
@@ -244,7 +318,7 @@ width: auto;
     font-size:23px;
     font-weight: 900;
     margin-bottom: 12px;
-    border-bottom:1px solid #334e68  ;
+    border-bottom:1px solid var(---detailsBorderbottom) ;
 
 
 

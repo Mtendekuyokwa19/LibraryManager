@@ -214,7 +214,30 @@ function bookRemove(){
 }
 
 
+let toogle=document.querySelector('#toogle');
+let container=document.querySelector('body');
 
+toogle.addEventListener('click',function(e){
+
+if(container.className==="Dark"){
+
+  toogle.textContent="Light Mode"
+  container.className="Light"
+  toogle.style.setProperty("background-color","#5DAAEE")
+  toogle.style.setProperty("color","White")
+}
+else{
+  toogle.textContent="Dark Mode"
+
+  container.className="Dark"
+  toogle.style.setProperty("background-color","#191D23")
+  toogle.style.setProperty("color","White")
+
+
+}
+
+
+})
   
   
   

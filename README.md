@@ -24,7 +24,7 @@
 ![Screenshot of reading status](./readme/readStatus.png)
 *Reading status is `read`*       
 ![Screenshot of reading status](./readme/readAbility2.png)
-
+4. Light Mode and Dark mode toogle
 
  ## Technologies and Tools 	🔧
 
