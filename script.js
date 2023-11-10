@@ -20,18 +20,14 @@ function addBookToLibrary(book) {
   
 }
 
-function Book(name,Author,pages,Status="not read") {
+function Book(name,Author="not specified",pages=0,Status="not read") {
   this.name=name,
   this.Author=Author,
   this.pages=pages
   this.Status=Status
 }
 
-Book.prototype.reading=function(){
 
-  this.Status="Read";
-
-}
 
 let carrier;
 
@@ -76,7 +72,7 @@ for (let key in extra) {
 let statusManager=document.createElement('div');
 statusManager.id="statusManager";
 subject.appendChild(statusManager);
-//Use of for in loop was done because there is a bug thats preventing normal access to Status
+
 let readStatus=document.createElement('button');
 readStatus.setAttribute("class", "checkbox");
 
@@ -86,9 +82,6 @@ readStatus.textContent=extra["Status"];
       readStatus.style.setProperty("background-color","green")
       
     } 
-
-  
-
 
 statusManager.appendChild(readStatus);
 readStatus.addEventListener('click',(e)=>{
@@ -110,7 +103,7 @@ readStatus.addEventListener('click',(e)=>{
 
  extra["Status"]=readStatus.textContent;
 
-  // manageStatus(readStatus);
+
 
 })
 
@@ -124,25 +117,29 @@ statusManager.appendChild(deletebtn);
 
     bookCollection.appendChild(subject)
 
-    // 
 
 }
 
-create.addEventListener("click",function(e){
+
+
+
+
+
+create.addEventListener("click",
+
+function(e){
 
   let Article=new Book(Name.value,writer.value,pages.value);
-if (!(Article.name===undefined||Article.name===''&&Article.Author===undefined||Article.Author===''&&Article.pages==''&&Article.pages===undefined)) {
- 
-addBookToLibrary(Article);
 
+if (!((Name.value===""||Name===undefined))) {
 
+  addBookToLibrary(Article);
   bringBooks(myLibrary);
-
-
   
 }
 
-//because when one is removed the others remain
+
+
 
 function remover() {
   
@@ -166,23 +163,17 @@ this.button=button.addEventListener('click',()=>{
    createDiv(myLibrary[i]);
 
 
- 
- 
-
 }
 
 
   remover();
 
-
-
-
-
-
 });
 
 
 };
+
+
 let AllBooks=[];
 let count =0;
 myLibrary.forEach(myLibrary => {
@@ -196,13 +187,10 @@ count++;
   
 });
 
-
-
-
 }
 
 remover();
-}
+},
 
 )
 
@@ -214,7 +202,6 @@ remove.addEventListener("click",()=>{
 
 })
 
-//to delete entry
 
 function bookRemove(){
 
@@ -225,8 +212,7 @@ function bookRemove(){
  })
 
 }
-//toggling button
-//toggle from
+
 
 
   
