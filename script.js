@@ -33,7 +33,7 @@ let carrier;
 
 let bookCollection=document.querySelector('.bookCollection');
 
-
+//loop to create books
 function bringBooks(myLibrary){
 bookRemove();
 
@@ -45,7 +45,7 @@ for (let i = 0; i <myLibrary.length; i++) {
   }
 }
 
-
+//creating the elements in DOM
 function createDiv(extra){
 
   let subject=document.createElement('div');
@@ -140,7 +140,7 @@ if (!((Name.value===""||Name===undefined))) {
 
 
 
-
+//function to be removing the entries
 function remover() {
   
 
@@ -194,6 +194,7 @@ remover();
 
 )
 
+//closing the dialog box
 let remove=document.getElementById("remove");
 let text=document.getElementById("personal");
 remove.addEventListener("click",()=>{
@@ -202,7 +203,7 @@ remove.addEventListener("click",()=>{
 
 })
 
-
+//Removes all books to allow refreshing when entering new book and also when deleting books
 function bookRemove(){
 
   let books=document.querySelectorAll(".details");
@@ -213,7 +214,7 @@ function bookRemove(){
 
 }
 
-
+//changing from light mode to dark mode
 let toogle=document.querySelector('#toogle');
 let container=document.querySelector('body');
 
@@ -238,7 +239,6 @@ else{
 
 
 })
-  
   
   
 
