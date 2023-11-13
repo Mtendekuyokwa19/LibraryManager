@@ -11,8 +11,15 @@ let pages=document.getElementById("pages");
 let create=document.getElementById("Create");
 let Name=document.getElementById("Book");
 let writer=document.getElementById("Author");
+function Book(name,Author="not specified",pages=0,Status="not read") {
+  this.name=name,
+  this.Author=Author,
+  this.pages=pages
+  this.Status=Status
+}
 
 const myLibrary = [];
+
 
 function addBookToLibrary(book) {
   
@@ -20,12 +27,7 @@ function addBookToLibrary(book) {
   
 }
 
-function Book(name,Author="not specified",pages=0,Status="not read") {
-  this.name=name,
-  this.Author=Author,
-  this.pages=pages
-  this.Status=Status
-}
+
 
 
 
@@ -129,7 +131,11 @@ create.addEventListener("click",
 
 function(e){
 
+  
   let Article=new Book(Name.value,writer.value,pages.value);
+//Making the title upper case
+Article.name=Article.name.toUpperCase();
+
 
 if (!((Name.value===""||Name===undefined))) {
 
@@ -242,3 +248,12 @@ else{
   
   
 
+//default entries
+
+// let intialBook=new Book("The Life of Pablo","Kanye West",808);
+
+// addBookToLibrary(intialBook);
+
+// bringBooks(myLibrary);
+
+// remover();
