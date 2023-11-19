@@ -7,16 +7,25 @@ newEntry.addEventListener("click", () => {
     dialog.show();
 
   })
+
 let pages=document.getElementById("pages");
 let create=document.getElementById("Create");
 let Name=document.getElementById("Book");
 let writer=document.getElementById("Author");
-function Book(name,Author="not specified",pages=0,Status="not read") {
-  this.name=name,
-  this.Author=Author,
-  this.pages=pages
-  this.Status=Status
+
+class Book{
+
+   constructor(name,Author,pages,Status="not read") {
+    this.name=name,
+    this.Author=Author,
+    this.pages=pages
+    this.Status=Status
+  }
+
+
 }
+
+
 
 const myLibrary = [];
 
@@ -131,9 +140,25 @@ create.addEventListener("click",
 
 function(e){
 
-  
-  let Article=new Book(Name.value,writer.value,pages.value);
+  if ((Name.value==='')||(writer.value==='')||(pages.value==='')) {
+
+
+    return;
+  }
+
+
 //Making the title upper case
+let Article=new Book(Name.value,writer.value,pages.value);
+
+
+let duplicate=checkDuplicates(myLibrary,Article);
+
+console.log(duplicate);
+if (duplicate===1) {
+
+  console.log("not kobe")
+  return;
+}
 Article.name=Article.name.toUpperCase();
 
 
@@ -154,31 +179,51 @@ let deletebtn=document.querySelectorAll(".deletebtn");
 let i=0;
 let j=0;
 
-function libraryCheckout(obj,pos,button){
-this.obj=obj;
-this.pos=pos;
-this.button=button.addEventListener('click',()=>{
-  
-  console.log(AllBooks);
+
+class libraryCheckout{
+
+  constructor(obj,pos,button){
+
+    this.obj=obj;
+    this.pos=pos;
+    this.button=button.addEventListener('click',()=>{
+      
+    this.manipulate();
+        
+    });
     
-  myLibrary.splice(pos,1);
+    
+    
+
+
+
+  }
+
+
+  manipulate(){
+    
+    myLibrary.splice(this.pos,1);
+     
+    bookRemove();
+   console.log(myLibrary);
+    for (let i = 0; i < myLibrary.length; i++) {
+     createDiv(myLibrary[i]);
+  
+  
+  }
+  
  
-  bookRemove();
- console.log(myLibrary);
-  for (let i = 0; i < myLibrary.length; i++) {
-   createDiv(myLibrary[i]);
+  
+  
+    remover();
+  
+  
+
+
+  }
 
 
 }
-
-
-  remover();
-
-});
-
-
-};
-
 
 let AllBooks=[];
 let count =0;
@@ -246,14 +291,35 @@ else{
 
 })
   
+
+let errorBox=document.querySelector('#errorMessage')
+let closeError=document.querySelector('#errorMessage button');
+closeError.addEventListener('click',function(e){
+
+errorBox.close();
+
+
+})
+ function checkDuplicates(collection,{name}){
+
   
+for (let i = 0; i < collection.length; i++) {
+  name=name.toUpperCase();
 
-//default entries
+  if(collection[i].name===name){
+    errorBox.show();
+    
 
-// let intialBook=new Book("The Life of Pablo","Kanye West",808);
+    return 1
+  }
+  
+}
 
-// addBookToLibrary(intialBook);
 
-// bringBooks(myLibrary);
 
-// remover();
+
+
+
+
+ } 
+
