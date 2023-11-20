@@ -1,4 +1,3 @@
-
 let newEntry=document.getElementById("compose");
 
 let dialog=document.getElementById("entryBox");
@@ -35,10 +34,6 @@ function addBookToLibrary(book) {
   myLibrary[(myLibrary.length)]=book;
   
 }
-
-
-
-
 
 let carrier;
 
@@ -131,11 +126,6 @@ statusManager.appendChild(deletebtn);
 
 }
 
-
-
-
-
-
 create.addEventListener("click",
 
 function(e){
@@ -191,16 +181,10 @@ class libraryCheckout{
     this.manipulate();
         
     });
-    
-    
-    
-
-
 
   }
 
-
-  manipulate(){
+manipulate(){
     
     myLibrary.splice(this.pos,1);
      
@@ -211,15 +195,8 @@ class libraryCheckout{
   
   
   }
-  
- 
-  
-  
+
     remover();
-  
-  
-
-
   }
 
 
@@ -291,7 +268,6 @@ else{
 
 })
   
-
 let errorBox=document.querySelector('#errorMessage')
 let closeError=document.querySelector('#errorMessage button');
 closeError.addEventListener('click',function(e){
@@ -314,12 +290,6 @@ for (let i = 0; i < collection.length; i++) {
   }
   
 }
-
-
-
-
-
-
 
  } 
 
