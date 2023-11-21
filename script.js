@@ -1,6 +1,5 @@
 let newEntry=document.getElementById("compose");
 let dialog=document.getElementById("entryBox");
-
 let pages=document.getElementById("pages");
 let create=document.getElementById("Create");
 let Name=document.getElementById("Book");
@@ -17,11 +16,13 @@ let closeError=document.querySelector('#errorMessage button');
 let AllBooks=[];
 let count =0;
 
-
 newEntry.addEventListener("click", () => {
     dialog.show();
     errorBox.close();
+    
   })
+
+
 
 class Book{
 
