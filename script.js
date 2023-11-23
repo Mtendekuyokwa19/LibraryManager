@@ -22,8 +22,6 @@ newEntry.addEventListener("click", () => {
     
   })
 
-
-
 class Book{
 
    constructor(name,Author,pages,Status="not read") {
@@ -70,7 +68,6 @@ for (let key in extra) {
   
  i++;
 }
-
 
 let statusManager=document.createElement('div');
 statusManager.id="statusManager";
@@ -165,7 +162,6 @@ constructor(obj,pos,button){
 
 
 }
-
 
 myLibrary.forEach(myLibrary => {
   let NewBook=new libraryCheckout(myLibrary,count,deletebtn[count]);
