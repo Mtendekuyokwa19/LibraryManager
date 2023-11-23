@@ -1,17 +1,26 @@
-
 let newEntry=document.getElementById("compose");
-
 let dialog=document.getElementById("entryBox");
-
-newEntry.addEventListener("click", () => {
-    dialog.show();
-
-  })
-
 let pages=document.getElementById("pages");
 let create=document.getElementById("Create");
 let Name=document.getElementById("Book");
 let writer=document.getElementById("Author");
+let bookCollection=document.querySelector('.bookCollection');
+let remove=document.getElementById("remove");
+let text=document.getElementById("personal");
+const myLibrary = [];
+let carrier;
+let toogle=document.querySelector('#toogle');
+let container=document.querySelector('body');
+let errorBox=document.querySelector('#errorMessage')
+let closeError=document.querySelector('#errorMessage button');
+let AllBooks=[];
+let count =0;
+
+newEntry.addEventListener("click", () => {
+    dialog.show();
+    errorBox.close();
+    
+  })
 
 class Book{
 
@@ -21,14 +30,7 @@ class Book{
     this.pages=pages
     this.Status=Status
   }
-
-
 }
-
-
-
-const myLibrary = [];
-
 
 function addBookToLibrary(book) {
   
@@ -36,23 +38,12 @@ function addBookToLibrary(book) {
   
 }
 
-
-
-
-
-let carrier;
-
-let bookCollection=document.querySelector('.bookCollection');
-
 //loop to create books
 function bringBooks(myLibrary){
 bookRemove();
 
 for (let i = 0; i <myLibrary.length; i++) {
- 
-    createDiv(myLibrary[i]);
-  
-    
+    createDiv(myLibrary[i]);   
   }
 }
 
@@ -60,7 +51,6 @@ for (let i = 0; i <myLibrary.length; i++) {
 function createDiv(extra){
 
   let subject=document.createElement('div');
-  
   subject.classList.add('subject');
   subject.className="details";
  
@@ -79,22 +69,20 @@ for (let key in extra) {
  i++;
 }
 
-
 let statusManager=document.createElement('div');
 statusManager.id="statusManager";
 subject.appendChild(statusManager);
 
 let readStatus=document.createElement('button');
 readStatus.setAttribute("class", "checkbox");
-
 readStatus.textContent=extra["Status"];
 
     if (readStatus.textContent==="Read") {
       readStatus.style.setProperty("background-color","green")
       
     } 
-
 statusManager.appendChild(readStatus);
+
 readStatus.addEventListener('click',(e)=>{
  if(readStatus.textContent==="not read"){
   
@@ -104,18 +92,10 @@ readStatus.addEventListener('click',(e)=>{
  }
 
  else{
-
    readStatus.textContent="not read";
-
- 
-
    readStatus.style.setProperty("background-color","red")
  }
-
  extra["Status"]=readStatus.textContent;
-
-
-
 })
 
 let deletebtn=document.createElement('button');
@@ -124,36 +104,20 @@ deletebtn.id="deletebtn";
 deletebtn.textContent="Delete";
 
 statusManager.appendChild(deletebtn);
-
-
     bookCollection.appendChild(subject)
-
-
 }
-
-
-
-
-
-
 create.addEventListener("click",
-
 function(e){
+ 
 
   if ((Name.value==='')||(writer.value==='')||(pages.value==='')) {
-
-
     return;
   }
 
-
 //Making the title upper case
 let Article=new Book(Name.value,writer.value,pages.value);
-
-
 let duplicate=checkDuplicates(myLibrary,Article);
 
-console.log(duplicate);
 if (duplicate===1) {
 
   console.log("not kobe")
@@ -161,77 +125,46 @@ if (duplicate===1) {
 }
 Article.name=Article.name.toUpperCase();
 
-
 if (!((Name.value===""||Name===undefined))) {
-
-  addBookToLibrary(Article);
+addBookToLibrary(Article);
   bringBooks(myLibrary);
   
 }
 
-
-
 //function to be removing the entries
 function remover() {
-  
-
-let deletebtn=document.querySelectorAll(".deletebtn");
+  let deletebtn=document.querySelectorAll(".deletebtn");
 let i=0;
-let j=0;
-
 
 class libraryCheckout{
-
-  constructor(obj,pos,button){
-
+constructor(obj,pos,button){
     this.obj=obj;
     this.pos=pos;
+
     this.button=button.addEventListener('click',()=>{
-      
-    this.manipulate();
+     this.manipulate();
         
     });
-    
-    
-    
-
-
 
   }
-
 
   manipulate(){
     
     myLibrary.splice(this.pos,1);
-     
-    bookRemove();
+      bookRemove();
    console.log(myLibrary);
     for (let i = 0; i < myLibrary.length; i++) {
      createDiv(myLibrary[i]);
-  
-  
   }
-  
- 
-  
-  
+
     remover();
-  
-  
-
-
   }
 
 
 }
 
-let AllBooks=[];
-let count =0;
 myLibrary.forEach(myLibrary => {
-
-
   let NewBook=new libraryCheckout(myLibrary,count,deletebtn[count]);
-
   AllBooks[count]=NewBook;
 
 count++;
@@ -241,13 +174,10 @@ count++;
 }
 
 remover();
-},
-
-)
+},)
 
 //closing the dialog box
-let remove=document.getElementById("remove");
-let text=document.getElementById("personal");
+
 remove.addEventListener("click",()=>{
 
   dialog.close()
@@ -264,62 +194,38 @@ function bookRemove(){
  })
 
 }
-
 //changing from light mode to dark mode
-let toogle=document.querySelector('#toogle');
-let container=document.querySelector('body');
 
 toogle.addEventListener('click',function(e){
 
 if(container.className==="Dark"){
 
-  toogle.textContent="Light Mode"
-  container.className="Light"
-  toogle.style.setProperty("background-color","#5DAAEE")
-  toogle.style.setProperty("color","White")
+  toogle.textContent="Light Mode";
+  container.className="Light";
+  toogle.style.setProperty("background-color","#5DAAEE");
+  toogle.style.setProperty("color","White");
 }
 else{
   toogle.textContent="Dark Mode"
 
-  container.className="Dark"
-  toogle.style.setProperty("background-color","#191D23")
-  toogle.style.setProperty("color","White")
-
-
-}
-
-
-})
+  container.className="Dark";
+  toogle.style.setProperty("background-color","#191D23");
+  toogle.style.setProperty("color","White");
+}})
   
 
-let errorBox=document.querySelector('#errorMessage')
-let closeError=document.querySelector('#errorMessage button');
 closeError.addEventListener('click',function(e){
-
 errorBox.close();
-
-
 })
+
  function checkDuplicates(collection,{name}){
 
-  
-for (let i = 0; i < collection.length; i++) {
+  for (let i = 0; i < collection.length; i++) {
   name=name.toUpperCase();
 
   if(collection[i].name===name){
     errorBox.show();
     
-
-    return 1
-  }
-  
-}
-
-
-
-
-
-
-
- } 
+ return 1
+  }}} 
 
