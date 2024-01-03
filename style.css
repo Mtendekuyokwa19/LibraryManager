@@ -397,3 +397,24 @@ color:white;
 
 
 }
+
+#entryBox::backdrop{
+
+/* filter: grayscale(1); */
+
+}
+dialog{
+
+    overflow: hidden;
+
+}
+
+#toogle{
+    transition: background-color 1600ms ease-in , color 400ms ease-in;
+}
+
+body{
+
+    transition: background-color 900ms ease-in , color 400ms ease-in;
+
+}

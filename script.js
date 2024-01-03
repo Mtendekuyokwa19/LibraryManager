@@ -17,9 +17,11 @@ let AllBooks=[];
 let count =0;
 
 newEntry.addEventListener("click", () => {
-    dialog.show();
+    dialog.showModal()
     errorBox.close();
-    
+  
+
+    clearHtmlform()
   })
 
 class Book{
@@ -35,6 +37,13 @@ class Book{
 function addBookToLibrary(book) {
   
   myLibrary[(myLibrary.length)]=book;
+
+ 
+  
+}
+
+function clearHtmlform() {
+  document.querySelector('form').reset();
   
 }
 
@@ -106,75 +115,78 @@ deletebtn.textContent="Delete";
 statusManager.appendChild(deletebtn);
     bookCollection.appendChild(subject)
 }
-create.addEventListener("click",
-function(e){
+function freshBook(){
  
 
-  if ((Name.value==='')||(writer.value==='')||(pages.value==='')) {
+  //Making the title upper case
+  let Article=new Book(Name.value,writer.value,pages.value);
+  let duplicate=checkDuplicates(myLibrary,Article);
+  
+  if (duplicate===1) {
+  
+    console.log("not kobe")
     return;
   }
-
-//Making the title upper case
-let Article=new Book(Name.value,writer.value,pages.value);
-let duplicate=checkDuplicates(myLibrary,Article);
-
-if (duplicate===1) {
-
-  console.log("not kobe")
-  return;
-}
-Article.name=Article.name.toUpperCase();
-
-if (!((Name.value===""||Name===undefined))) {
-addBookToLibrary(Article);
-  bringBooks(myLibrary);
+  Article.name=Article.name.toUpperCase();
   
-}
-
-//function to be removing the entries
-function remover() {
-  let deletebtn=document.querySelectorAll(".deletebtn");
-let i=0;
-
-class libraryCheckout{
-constructor(obj,pos,button){
-    this.obj=obj;
-    this.pos=pos;
-
-    this.button=button.addEventListener('click',()=>{
-     this.manipulate();
-        
-    });
-
-  }
-
-  manipulate(){
+  if (!((Name.value===""||Name===undefined))) {
+  addBookToLibrary(Article);
+    bringBooks(myLibrary);
     
-    myLibrary.splice(this.pos,1);
-      bookRemove();
-   console.log(myLibrary);
-    for (let i = 0; i < myLibrary.length; i++) {
-     createDiv(myLibrary[i]);
   }
-
-    remover();
-  }
-
-
-}
-
-myLibrary.forEach(myLibrary => {
-  let NewBook=new libraryCheckout(myLibrary,count,deletebtn[count]);
-  AllBooks[count]=NewBook;
-
-count++;
   
-});
+  //function to be removing the entries
+  function remover() {
+    let deletebtn=document.querySelectorAll(".deletebtn");
+  let i=0;
+  
+  class libraryCheckout{
+  constructor(obj,pos,button){
+      this.obj=obj;
+      this.pos=pos;
+  
+      this.button=button.addEventListener('click',()=>{
+       this.manipulate();
+          
+      });
+  
+    }
+  
+    manipulate(){
+      
+      myLibrary.splice(this.pos,1);
+        bookRemove();
+     console.log(myLibrary);
+      for (let i = 0; i < myLibrary.length; i++) {
+       createDiv(myLibrary[i]);
+    }
+  
+      remover();
+    }
+  
+  
+  }
+  
+  myLibrary.forEach(myLibrary => {
+    let NewBook=new libraryCheckout(myLibrary,count,deletebtn[count]);
+    AllBooks[count]=NewBook;
+  
+  count++;
+    
+  });
+  
+  }
+  
+  remover();
+  }
+create.addEventListener("click",function (e) {
 
+  validation.Valid.status===true?freshBook():validation.Valid;
+  console.log(validation.Valid.status)
+  
+  
 }
-
-remover();
-},)
+)
 
 //closing the dialog box
 
@@ -229,3 +241,83 @@ errorBox.close();
  return 1
   }}} 
 
+  //Addition of custom validation
+
+  let validation=(()=>{
+
+    let bookTitle=document.querySelector('#Book');
+    let Author=document.querySelector('#Author')
+    let pages=document.querySelector('#pages');
+
+    let Valid={status:false};
+    function checkPages() {
+      if (pages.validity.typeMismatch) {
+
+        pages.setCustomValidity("Please Make sure you fill in a Number 😀")
+        Valid.status=false
+        return
+      }
+
+      else if (pages.validity.rangeUnderflow){
+
+        pages.setCustomValidity("Please Make sure you fill in a Numbers Greater than 1 😀")
+        Valid.status=false
+        return
+      }
+
+      else{
+        pages.setCustomValidity("")
+        enablebtn()
+        Valid.status=false
+        return
+
+      }
+      
+    }
+
+    function NamesValidations(input) {
+      if(input.checkValidity()){
+       Valid.status=true
+      }
+      else if (input.validity.typeMismatch) {
+        input.setCustomValidity(" Make sure you fill in  "+JSON.stringify(input))
+      
+      Valid.status=false
+      }
+      else if (input.validity.valueMissing) {
+        input.setCustomValidity("add some  words 😀")
+        
+        Valid.status=false
+      }
+      else if (input.validity.tooLong){
+        input.setCustomValidity("Must too many  words 😀")
+        Valid.status=false
+     
+      }
+      
+
+     
+
+      
+    }
+
+    function disablebtn() {
+      document.getElementById("Create").disabled = true;
+      
+    }
+    function enablebtn() {
+      document.querySelector("#Create").disable=0;
+    }
+    Author.addEventListener('input',function () {
+      NamesValidations(Author);
+      
+    })
+    bookTitle.addEventListener('input',function () {
+ NamesValidations(bookTitle)     
+    })
+pages.addEventListener('input',checkPages)
+
+return{Valid}
+  })()
+
+ 

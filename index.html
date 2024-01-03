@@ -31,11 +31,11 @@
     <form action="" method="dialog">
         <div>
             <label for="Book">Book title:</label>
-            <input id="Book" type="text" placeholder="Moral Ground"  required >
+            <input id="Book" type="text" placeholder="Moral Ground" minlength="1" maxlength="20" required >
         </div>
         <div>
             <label for="Author">Author:</label>
-            <input id="Author" type="text" placeholder="Wangari Mathaai" required>
+            <input id="Author" type="text" placeholder="Wangari Mathaai" minlength="9" maxlength="20" required>
         </div>
         <div>
             <label for="pages">Total pages:</label>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="statusbtn">
-            <button type="button" id="remove">Cancel</button><button type="submit" id="Create">Create</button>
+            <button type="button" id="remove">Cancel</button><button type="submit"  id="Create">Create</button>
         </div>
     </form>
 
